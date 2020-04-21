@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Recherche d'un patient</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Patients</h2>
+            <form class="form-inline" action="" method="GET">
+                {{ form }}
+                <button class="btn" type="submit">Cherchez</button>
+                </fieldset>
+            </form>
+
+            <table class="table table-bordered table-condensed">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Lieu de naissance</th>
+                    <th>Consultez la fiche du patient</th>
+                    <th>Editez la fiche du patient</th>
+                    <th>Supprimez la fiche du patient</th>
+
+                </tr>
+                {% for patient in patient_list %}
+                <tr>
+                    <td>{{patient.nom}}</td>
+                    <td>{{patient.prenom}}</td>
+                    <td>{{patient.lieu_naissance}}</td>
+
+                    <td class="tableText">  <a href="{% url "desciption_patient" patient.pk%}">consultez </td>
+                    <td class="tableText">  <a href="{% url "edition_patient" patient.numero_secu%}">editez </td>
+                    <td class="tableText">  <a href="{% url "suppression_patient" patient.numero_secu%}">supprimez </td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+
+</html>

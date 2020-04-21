@@ -1,0 +1,43 @@
+{% extends "italiano/base.html" %}
+
+{% load static %}
+
+
+{#  Commentaire :  ces blocks remplaceront les blocks de la page base.html #}
+
+{% block title %}
+Ma page d'accueil
+{% endblock %}
+
+
+{% block content %}
+<h1>Cours d'italien!!!!</p>
+<p>La date actuelle est : {{ current_date }}</p>
+
+<li><a href="{% url "interro_mots" %}">Testez votre italien</a></li>
+
+<h3>Liste des mots : </h3>
+
+{% for mot in mot_list %}
+<div class="mot">
+{{ mot.name_fr }} {{ mot.name_it }}
+</div>
+{% empty %}
+<p>Aucun mot.</p>
+{% endfor %}
+<br/>
+
+
+<h3>Liste des expressions : </h3>
+{% for exp in expression_list %}
+<div class="exp">
+{{ exp.expr_fr }} {{ exp.expr_it }}
+</div>
+{% empty %}
+<p>Aucune expression.</p>
+{% endfor %}
+<br/>
+
+
+{% endblock %}
+

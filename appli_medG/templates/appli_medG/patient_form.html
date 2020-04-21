@@ -1,0 +1,44 @@
+{% extends "appli_medG/base_form.html" %}
+
+
+<!--Modèle 1-->
+<!------------------------------------------------------------------->
+{% comment %}
+{% block content %}
+    <form action="{% url "create_new_patient" %} " method="post" >
+        {% csrf_token %}
+        <table>{{form.as_table}}</table>
+        <button type="submit" >Ajoutez</button>
+        </form>
+{% endblock %}
+{% endcomment %}
+
+<!--{# action :  Il s'agit de la destination (ressource ou URL) où sont envoyées les données lorsque le formulaire est soumis.#}-->
+<!--{# Si la valeur de cet attribut n'est pas initialisée (ou la chaine vide est affectée à cet attribut),#}-->
+<!--{# alors le formulaire sera renvoyé à l' URL de la page courante.#}-->
+<!--{# Il indique l'action à exécuter lorsque lors de l'envoi des données.#}-->
+
+
+<!--Modèle 2 avec crispy-->
+<!------------------------------------------------------------------->
+{% comment %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form action="{% url "create_new_patient" %} " method="post" >
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" >Ajoutez</button>
+        </form>
+{% endblock %}
+{% endcomment %}
+
+
+
+<!--Modèle 3 avec crispy réorganisé-->
+<!------------------------------------------------------------------->
+{% load crispy_forms_tags %}
+{% block content %}
+    {% crispy form %}
+{% endblock %}
+
+

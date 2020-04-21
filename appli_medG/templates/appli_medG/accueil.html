@@ -1,0 +1,30 @@
+<!--{#  Ces blocks remplaceront les blocks de la page base.html #}-->
+{% extends "appli_medG/base.html" %}
+
+{% block content %}
+    <h1>Bienvenue sur l'application de médecine générale</h2>
+    <p>La date actuelle est : {{ current_date }}</p>
+
+    <br>
+    <li><a href="{% url "create_new_patient" %}">Ajoutez un nouveau patient</a></li>
+    <li><a href="{% url "search_patient" %}">Recherchez un patient</a></li>
+    <li><a href="{% url "list_traitement" %}">Consultez les médicaments</a></li>
+    <li><a href="{% url "search_traitement" %}">Recherchez un médicament</a></li>
+    <br>
+
+
+    <h3>Liste des patients : </h3>
+    {% for patient in patient_list %}
+        <div class="patient">
+        {{ patient.nom | upper}}
+        {{ patient.prenom }}
+        <a href="{% url "desciption_patient" patient.pk%}">consultez</a>
+        <a href="{% url "edition_patient" patient.numero_secu%}">editez le patient</a>
+        <a href="{% url "edition_carnet" patient.numero_secu%}">editez le carnet de santé</a>
+        <a href="{% url "suppression_patient" patient.numero_secu%}">supprimez le patient</a>
+        </div>
+        {% empty %}
+        <p>Aucun patient.</p>
+    {% endfor %}
+{% endblock %}
+

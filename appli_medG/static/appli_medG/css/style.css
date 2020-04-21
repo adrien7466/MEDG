@@ -1,0 +1,83 @@
+ /*
+
+*	        Sélectionne tous les éléments
+E, F	    Sélectionne tous les éléments de type E et de type F
+E F	        Sélectionne tous les éléments F à l’intérieur des éléments E
+E > F	    Sélectionne les éléments F enfants directs des éléments E
+E + F	    Sélectionne tout élément F placé directement après un élément E
+E~F	        Sélectionne tout élément F placé après un élément E dans la page
+
+
+ */
+
+*{
+    color : blue;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+ }
+
+
+body {
+    background-color: white;
+    font-family: Verdana, sans-serif;
+    font-size: 100%;
+ }
+h1 {
+    font-size: 200%;
+    color: navy;
+    text-align: center;
+ }
+h2 {
+    font-size: 150%;
+    color: red;
+    padding-left: 15px;
+    text-align: center;
+ }
+p,ul,li,td {
+    color: black;
+ }
+
+a:link {
+    color: green;
+    text-decoration: underline;
+ }
+
+a:visited {
+    color: gray;
+ }
+a:hover {
+    color: red;
+    text-decoration: none;
+}
+
+a:active, a:focus {
+    color: red;
+}
+
+
+/* Accés à la classe patient définie dans accueil.html*/
+.patient {
+    color: red;
+}
+
+
+.gros{
+    font-size: 24px;
+}
+/*Texte en italique*/
+.italique{
+    font-style: italic;
+}
+/*Crée un trait de soulignement sous le texte*/
+.souligne{
+    text-decoration: underline;
+}
+.orange{
+    color: orange;
+}
+.bleu{
+    color: blue;
+}

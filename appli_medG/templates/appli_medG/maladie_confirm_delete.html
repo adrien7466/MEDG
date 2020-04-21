@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Suppresion d'une maladie</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Etes vous sure de vouloir supprimer la maladie ?</h1>
+        <p>{{ maladie.nom_m }} diagnostiqué le {{maladie.date_diagnostique|date:"DATE_FORMAT"}} </p>
+        <form method="post" action="">
+        {% csrf_token %}
+        <input type="submit" value="Supprimer la maladie" />  - <a href="{% url "accueil" %}" >Annulation</a>
+        </form>
+    </body>
+
+</html>

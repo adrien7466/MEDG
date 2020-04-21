@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Recherche d'un patient</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Patients</h2>
+            <form class="form-inline" action="" method="GET">
+                {{ form }}
+                <button class="btn" type="submit">Cherchez</button>
+                </fieldset>
+            </form>
+
+            <table class="table table-bordered table-condensed">
+                <tr>
+                    <th>Nom du médicament</th>
+                    <th>Forme pharmaceutique</th>
+                    <th>Voies d'administration</th>
+                    <th>Taux de remboursement du médicament</th>
+                    <th>Prix du médiacment</th>
+
+
+                </tr>
+                {% for trait_ in traitement_list %}
+                <tr>
+                    <td>{{trait_.medicament}}</td>
+                    <td>{{trait_.forme}}</td>
+                    <td>{{trait_.voie_admi}}</td>
+                    <td>{{trait_.taux_remboursement}}</td>
+                    <td>{{trait_.prix}}</td>
+
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Détail d'un patient</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!--Présentation du patient-->
+        <h1>
+        {{ patient.civilite }} {{ patient.prenom }} {{ patient.nom }} ({{ patient.age }}  ans)
+         né le {{patient.date_naissance|date:"DATE_FORMAT"}} à {{patient.lieu_naissance }}
+        </h1>
+        <p class="infos">Numéro de sécurité social {{ patient.numero_secu }}, dernière consultation le {{patient.date_derniere_visite|date:"DATE_FORMAT" }}</p>
+
+        <!--Antécédants du patients-->
+        <div class="antecedent">
+        Antécédents : {{ patient.antecedent|linebreaks }}
+        </div>
+
+
+
+
+        <div class="maladie">
+            <h3>Maladies du patient : </h3>
+            <li> <a href="{% url "create_new_maladie" patient.pk%}">Ajoutez une maladie</a></li>
+            <ul>
+            {% for maladies_ in patient.carnetsante.maladie_set.all %}
+                {% if maladies_.statut == "en cours"  %}
+                    <li>  {{ maladies_.nom_m }} diagnostiqué le  {{ maladies_.date_diagnostique }}
+                            <a href="{% url "suppression_maladie" maladies_.pk%}">Supprimez cette maladie</a>
+                    </li>
+                    <ol>
+                        Traitements administrés :
+                        {% for traitement_ in maladies_.traitement.all%}
+                            <li>{{ traitement_.medicament}}</li>
+                         {% empty %}
+                            <p>Aucun traitements.</p>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+            {% empty %}
+               <p>Aucunes maladies.</p>
+            {% endfor %}
+            </ul>
+        </div>
+
+
+
+         <div class="addiction">
+            <h3>Addictions du patient : </h3>
+            <li> <a href="{% url "create_new_addiction" patient.pk%}">Ajoutez une addiction</a></li>
+            <ul>
+             {% for addict_ in patient.carnetsante.addiction_set.all %}
+                <li>{{ addict_.nom_addiction }}  {{ addict_.degre_addiction }}</li>
+                {% empty %}
+                <p>Aucune addiction.</p>
+             {% endfor %}
+            </ul>
+        </div>
+
+
+
+        <div class="allergie">
+            <h3>Allergies du patient : </h3>
+            <ul>
+            {% for allergie_ in patient.carnetsante.allergie.all %}
+                {{ allergie_.medicament }}
+            {% empty %}
+                <p>Aucunes allergies.</p>
+            {% endfor %}
+            </ul>
+        </div>
+
+
+        <p><a href="{% url "accueil" %}">Lien vers l'accueil</a></p>
+    </body>
+</html>

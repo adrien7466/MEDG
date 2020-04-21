@@ -1,0 +1,135 @@
+
+# ============================================================================================
+I. Lancement et initialisation d'un projet
+# ============================================================================================
+
+
+1. Configuration de GIT
+# ---------------------------------------------
+git config --global user.name "Adrien Fuss"
+git congig --global user.email adrienfuss@hotmail.fr
+
+2. Créer un nouveau dossier de travail en local
+# ---------------------------------------------
+Se placer dans le dossier puis
+git init
+
+
+3. Créer une copie / accéder à un dépôt distant
+# ---------------------------------------------
+3.1 Ligne qui permet de dire au dépôt que l’on pointe vers le dépôt distant.
+! MED représente le nom court que vous utiliserez ensuite pour appeler votre dépôt. Appelez-le comme bon vous semble, mais un nom court et simple est toujours plus facile.
+git remote add MED lien_URL
+
+3.2 clone
+git clone lien_URL
+
+
+
+
+4. Obtenir et créer des branches
+# ---------------------------------------------
+
+! Indiquer toutes les branches disponibles, *indique la branche courante
+git branch
+
+! Créer une branche
+git branch nom_branch
+
+! Basculer sur la branche créée, * indiquera la nouvelle branche courante
+git checkout nom_branch
+
+! Supprimer une branche
+git branch -d nom_branch
+
+
+
+# ============================================================================================
+II. Enregistrement de modifications
+# ============================================================================================
+
+1. Introduction
+# ---------------------------------------------
+! Git gère les versions de vos travaux locaux à travers 3 zones locales majeures :
+    1. le répertoire de travail (working directory/WD) ;
+    2. l’index, ou stage (nous préférerons le second terme) ;
+    3. le dépôt local (Git directory/repository).
+
+
+L'index, ou stage, désigne tous les fichiers modifiés que vous souhaitez voir apparaître dans votre prochain commit.
+C'est avec la fonction  "git add"  que l'on ajoute un fichier au stage.
+
+Le dépôt local est l'historique de l'ensemble de vos actions (commits, configurations...).
+L'archivage se fait principalement avec la commande  git commit.
+
+1. -> 2. : git add
+2. -> 3. : git commit
+
+
+2.  Voir l'état des fichiers
+# ---------------------------------------------
+# voir les fichiers qui ont été modifiés mais pas encore commités
+# Git vous liste tous les fichiers qui ont changé sur le disque. Il peut aussi bien détecter les modifications que les ajouts, les suppressions et les renommages
+git status
+
+# voir les changements effectués
+git diff        # donne les modifications ur tous les fichiers
+ou
+git diff nom_fichier
+
+
+
+
+3. Réaliser un commit
+# ---------------------------------------------
+# ajouter un fichier au stage
+git add nom_fichier1 nomfichier2
+git add .
+! git add  est indispensable lorsque vous venez de créer de nouveaux fichiers que Git ne connaît pas encore.
+
+
+! Un commit est tout simplement un enregistrement de votre travail à un instant T sur la branche courante où vous êtes.
+git commmit -m "Commentaire sur l'enregistrement"
+
+! Commit de tous les fichiers dans la branche courante
+git commit -a
+
+! Consulter l'historique des commits
+git log
+
+! Annuler le dernier commmit
+git reset HEAD
+
+! Annuler un commit particulier
+git reset num_commit
+
+
+
+
+
+
+# Effectuer une remise
+git stash
+
+# liste des remises
+git stash list
+
+# appliquer une nouvelle remise
+git stash apply identifiant_remise
+
+
+
+
+
+# ============================================================================================
+
+
+
+6. Push
+# ---------------------------------------------
+! git push permet d'envoyer les modifications que l'on a réalisées en local sur le dépôt à distance
+
+
+7. Pull
+# ---------------------------------------------
+! git pull permet de récupérer en local le projet distant

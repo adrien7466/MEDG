@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Suppresion d'un patient</title>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Etes vous sure de vouloir supprimer ce patient ?</h1>
+        <p>{{ patient.prenom }} {{ patient.nom }}  né le {{patient.date_naissance|date:"DATE_FORMAT"}} à {{patient.lieu_naissance }} </p>
+        <form method="post" action="">
+        {% csrf_token %}
+        <input type="submit" value="Supprimer le patient" />  - <a href="{% url "accueil" %}" >Annulation</a>
+        </form>
+    </body>
+
+</html>

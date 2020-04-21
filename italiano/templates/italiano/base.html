@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="stylesheet" href="/media/css/style.css" />
+<title>{% block title %}Mon appli de medecine generale{% endblock%}</title>
+</head>
+<body>
+<nav>
+</nav>
+<section id="content">
+{% block content %}
+<h1>Bienvenue sur mon application</h1>
+<p>La date actuelle est : {{ current_date }}</p>
+{% endblock %}
+</section>
+<footer>© Adrien Fuss</footer>
+</body>
+</html>

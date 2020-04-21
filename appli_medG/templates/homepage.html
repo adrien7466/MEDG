@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <!--On insère le fichier css, celui-ci ne doit pas se situé dans une balise extends -->
+    {% load static %}
+    <link href="{% static 'appli_medG/css/style.css' %}" rel="stylesheet" media="all" type="text/css">
+
+    <head>
+        <link rel="stylesheet" href="/media/css/style.css" />
+        <title>{% block title %}Mon site internet{% endblock%}</title>
+    </head>
+
+    <body>
+        <section id="content">
+            <h1>Bienvenue sur mon site intenet:</h1>
+            <h2>Application de médecine générale : <a href="{% url "accueil" %}">içi</a></h2>
+            <h2>Cours d'italien : <a href="{% url "accueil_it" %}">qui</a></h2>
+
+            <br>
+            <h2>Espaces personnels : </h2>
+            {# Commentaire : ci dessous des exemples de liens on passe en argument le nom de l'url et les arguments de la vue associées#}
+            <li><a href="{% url "espace_perso" "Adriano" %}">Lien vers l'espace perso de Adrien</a></li>
+            <li><a href="{% url "espace_perso" "Lau" %}">Lien vers l'espace perso de Lau</a></li>
+            <li><a href="{% url "espace_perso" "chou" %}">Lien vers l'espace perso de chou</a></li>
+            <li><a href="{% url "espace_perso" "Beppina" %}">Lien vers l'espace perso de Beppina</a></li>
+            <li><a href="{% url "espace_perso" "Bianca" %}">Lien vers l'espace perso de Bianca</a></li>
+            <br><br>
+
+
+
+<!--            Cours HTML et CSS-->
+            <!--                Création de titres :  <h1> , <h2>  ... <h6>           -->
+            <h1>Test du langage HTML</h1>
+            <h2>Titre de niveau 2</h2>
+
+            <!--                Création de paragraphe : <p> </p>-->
+            <!--                Pour chaque nouveau paragraphe, un retour à la ligne va être créé automatiquement et affiché par votre navigateur&ndash;&gt;-->
+            <p>Création d'un paragraphe</p>
+
+            <!--                Retour à la ligne : <br> ou <hr> pour un changement de thématique-->
+            <br>
+
+            <!--            Création d'une liste non ordonnée-->
+            <ul>
+                <li>Pomme</li>
+                <li>Poire</li>
+                <li>Banane</li>
+            </ul>
+
+            <!--            Création d'une liste ordonnée-->
+            <ol>
+                <li>Pomme</li>
+                <li>Poire</li>
+                <li>Banane</li>
+            </ol>
+
+            <!--            Création d'une liste non ordonnée <ul> et ordonnée <ol> -->
+            <ul>
+                <li>Legume</li>
+                <li>Fruit</li>
+                    <ol>
+                        <li>Pomme</li>
+                        <li>Poire</li>
+                        <li>Banane</li>
+                    </ol>
+                <li>Viande</li>
+            </ul>
+
+            <!--            Lien hypertext-->
+            <p>
+            Lien hypertext vers le cours HTML <a href="https://www.pierre-giraud.com/html-css-apprendre-coder-cours/">ici</a>
+            Avec ouverture d'une nouvelle page <a href="https://www.pierre-giraud.com/html-css-apprendre-coder-cours/" target="_blank">ici</a>
+            </p>
+
+            <!--            Envoyer un mail-->
+            <h3 class="gros souligne orange">Envoyer un mail</h3>
+            <p><a href="mailto:adrienfuss@hotmail.fr">mail</a></p>
+
+            <!--            Télécharger une image-->
+            <h3>Télécharger une image / fichier</h3>
+            <p><a href="static/appli_medG/image/Cam_lacourt.jpg" download="camL">image</a></p>
+
+        </section>
+
+        <nav>
+        </nav>
+        <footer>© Adrien Fuss</footer>
+    </body>
+</html>

@@ -1,0 +1,53 @@
+*-----------------------------------------------------------------------------------------
+*			runserver : lancer un serveur 
+*-----------------------------------------------------------------------------------------
+python manage.py runserver
+
+*-----------------------------------------------------------------------------------------
+*			python shell
+*-----------------------------------------------------------------------------------------
+python manage.py shell
+
+
+
+*-----------------------------------------------------------------------------------------
+*				Accéder et remplir la base de données	SQL
+*-----------------------------------------------------------------------------------------
+Il y a plusieurs commandes utiles pour interagir avec les migrations et manipuler le schéma de base de données avec Django :
+    migrate, qui est responsable de l’exécution et de l’annulation des migrations.
+    makemigrations, qui est responsable de la création de nouvelles migrations en fonction des modifications que vous avez apportées aux modèles.
+    sqlmigrate, qui affiche les instructions SQL correspondant à une migration.
+    showmigrations, qui affiche la liste des migrations d’un projet ainsi que leur état.
+
+Vous devez imaginer les migrations comme un système de contrôle de versions pour un schéma de base de données.
+makemigrations se charge de regrouper vos changements de modèle dans des fichiers de migration individuels - comme des commits -
+migrate est chargé d’appliquer les changements à la base de données.
+
+
+Charger une base de données
+1. supprimer db.sqlite3
+2. python manage.py makemigrations
+3. python manage.py migrate --run-syncdb       #Actualise l’état de la base de données en accord avec l’ensemble des modèles et des migrations actuels.
+
+lancement d'un python par exemple pour créer une base de données exemple:
+python manage.py shell
+exec(open("creation_objet_med.py").read())
+
+
+Accès à la base de données :
+python manage.py sqlmigrate appli_medG 0001 (numero du fcihier dans appli_medG/migrations/)
+
+
+
+*-----------------------------------------------------------------------------------------
+*	Creation d'un super user pour l'interface administrateur
+*-----------------------------------------------------------------------------------------
+python manage.py createsuperuser --username=Adrien --email=adrienfuss@hotmail.fr
+
+nom utilisateur : Adrien
+mdp: Fuss21061989
+
+nom utilisateur : Lau
+mdp: Tarzo06111991
+
+Accès au site admin : http://localhost:8000/admin/

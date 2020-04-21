@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <title>Détail des médicaments</title>
+        <meta charset="utf-8">
+    </head>
+
+    <body>
+        <!--Présentation des médicaments-->
+        <h1> Présentation des médicaments disponibles </h1>
+        {% for traitement in traitement_list %}
+            <tr>
+                <td>{{ traitement.CIS_code}} </td>
+                <td>{{ traitement.medicament}} </td>
+                <td>{{ traitement.forme}} </td>
+                <td>{{ traitement.voie_admi}} </td>
+                <br>
+            </tr>
+        {% empty %}
+            <p>Aucun médicament.</p>
+        {% endfor %}
+
+        <p><a href="{% url "accueil" %}">Lien vers l'accueil</a></p>
+    </body>
+</html>

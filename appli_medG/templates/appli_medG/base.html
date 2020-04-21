@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<!--On insère le fichier css, celui-ci ne doit pas se situé dans une balise extends -->
+{% load static %}
+<link href="{% static 'appli_medG/css/style.css' %}" rel="stylesheet" media="all" type="text/css">
+<!--l'écriture ci-dessous est équivalente :-->
+<!--<link href="/static/appli_medG/css/style.css" rel="stylesheet" media="all" type="text/css">-->
+
+
+<html lang="fr">
+    <head>
+        <title>{% block title %}Ma page d'accueil{% endblock%}</title>
+        <meta charset="utf-8">
+    </head>
+
+
+    <body>
+<!--        <header>Logiciel de médecine générale</header>-->
+        <nav>
+        </nav>
+        <section id="content">
+            {% block content %}
+                <h1>Bienvenue sur mon application</h1>
+                <p>La date actuelle est : {{ current_date }}</p>
+            {% endblock %}
+            <br>
+        </section>
+        <footer>© Laura Michelon</footer>
+    </body>
+
+</html>
