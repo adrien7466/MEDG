@@ -149,4 +149,5 @@ git branch -d nom_branch
 ! Fusionner les changements
 ! Lorsque vous avez fini de travailler sur une branche et que celle-ci est concluante,
 ! il faut « fusionner » cette branche vers « master » avec la commande  git merge  .
-git merge
+git checkout master
+git merge nom_branche
