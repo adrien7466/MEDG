@@ -1,9 +1,6 @@
-
 # ============================================================================================
 I. Lancement et initialisation d'un projet
 # ============================================================================================
-
-
 1. Configuration de GIT
 # ---------------------------------------------
 git config --global user.name "Adrien Fuss"
@@ -23,15 +20,29 @@ git remote add MED lien_URL
 
 3.2 clone
 git clone lien_URL
-
-
-
-
+# ============================================================================================
 
 
 
 # ============================================================================================
-II. Enregistrement de modifications
+II. Push / Pull sur le serveur
+# ============================================================================================
+
+1. Push
+# ---------------------------------------------
+git push ! permet d'envoyer les modifications que l'on a réalisées en local sur le dépôt à distance
+
+2. Pull
+# ---------------------------------------------
+git pull ! permet de récupérer en local le projet distant
+
+
+# ============================================================================================
+
+
+
+# ============================================================================================
+III. Enregistrement de modifications en local
 # ============================================================================================
 
 1. Introduction
@@ -64,17 +75,16 @@ ou
 git diff nom_fichier
 
 
-
-
-3. Réaliser un commit
+3. Ajouter des fichiers au stage
 # ---------------------------------------------
-
 ! ajouter un fichier au stage
 ! git add  est indispensable lorsque vous venez de créer de nouveaux fichiers que Git ne connaît pas encore.
 git add nom_fichier1 nomfichier2
 git add .
 
 
+4. Réaliser un commit
+# ---------------------------------------------
 ! Un commit est tout simplement un enregistrement de votre travail à un instant T sur la branche courante où vous êtes.
 git commmit -m "Commentaire sur l'enregistrement"
 
@@ -99,41 +109,14 @@ git checkout nom_fichier
  Les lignes que vous aviez ajoutées seront supprimées dans ce commit, et inversement.
 git revert num_commit
 git push
-
-
-
-# Effectuer une remise
-git stash
-
-# liste des remises
-git stash list
-
-# appliquer une nouvelle remise
-git stash apply identifiant_remise
-
+# ============================================================================================
 
 
 
 
 # ============================================================================================
-
-
-
-6. Push
-# ---------------------------------------------
-! git push permet d'envoyer les modifications que l'on a réalisées en local sur le dépôt à distance
-
-
-7. Pull
-# ---------------------------------------------
-! git pull permet de récupérer en local le projet distant
-
-
-
-
-4. Obtenir et créer des branches
-# ---------------------------------------------
-
+IV. Obtenir et créer des branches
+# ============================================================================================
 ! Indiquer toutes les branches disponibles, *indique la branche courante
 git branch
 
@@ -149,5 +132,33 @@ git branch -d nom_branch
 ! Fusionner les changements
 ! Lorsque vous avez fini de travailler sur une branche et que celle-ci est concluante,
 ! il faut « fusionner » cette branche vers « master » avec la commande  git merge  .
-git checkout master
-git merge nom_branche
+git checkout master         ! on se place sur la branche master
+git merge nom_branche       ! on merge
+git branch -d nom_branch    ! on supprime la branche / Si vraiment vous voulez supprimer une branche même si elle contient des changements que vous n’avez pas fusionnés (par exemple parce que votre idée à la base était une erreur), utilisez l’option -D (lettre capitale) :
+
+# ============================================================================================
+
+
+# ============================================================================================
+# V. Mettre de côté le travail en cours avant de changer de branche
+# ============================================================================================
+! Avant de changer de branche, vous devez avoir effectué un commit de tous vos changements.
+! En clair, un  git status  ne devrait afficher aucun fichier en cours de modification.
+! Si vous avez des changements non « commités » et que vous changez de branche,
+! les fichiers modifiés resteront comme ils étaient dans la nouvelle branche (et ce n’est en général pas ce que vous voulez !).
+
+# Pour éviter d’avoir à faire un commit au milieu d’un travail en cours, tapez : effectuez une remise
+git stash
+
+#  Vos fichiers modifiés seront sauvegardés et mis de côté.
+# on peut ensuite changer de branches
+# Puis revenir à la branche
+# Pour récupérer les changements que vous aviez mis de côté dans « mabranche », tapez :
+git stash apply
+
+
+# liste des remises
+git stash list
+
+# appliquer une nouvelle remise
+git stash apply identifiant_remise
