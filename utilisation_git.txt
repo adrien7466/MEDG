@@ -162,3 +162,26 @@ git stash list
 
 # appliquer une nouvelle remise
 git stash apply identifiant_remise
+
+
+
+
+# ============================================================================================
+# VI. Gérez les branches sur le serveur
+# ============================================================================================
+
+# Lister toutes les branches que le serveur connait
+git branch -r
+
+
+# Copie d'une branche du serveur
+git branch --track branchelocale origin/brancheserveur
+
+! Lorsque vous ferez un pull depuis la branche « brancheserveur », les changements seront fusionnés dans votre « branchelocale » local.
+! Il est donc important de savoir dans quelle branche vous vous trouvez avant de faire un pull.
+! Un pull depuis la branche « master » met à jour votre branche « master » locale en fonction de ce qui a changé sur le serveur,
+! et il en va de même pour n’importe quelle autre branche.
+
+
+# Ajouter une branche sur le serveur
+git push origin origin:refs/heads/nom_nouvelle_branche
