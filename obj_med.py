@@ -123,6 +123,8 @@ medecins_ = [
 ]
 
 
+print(medecins_)
+
 
 
 traitements_ =  [
