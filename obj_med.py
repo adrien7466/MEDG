@@ -124,6 +124,7 @@ medecins_ = [
 
 
 print(medecins_)
+print(patients_)
 
 
 
