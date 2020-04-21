@@ -125,7 +125,6 @@ medecins_ = [
 
 print(medecins_)
 print(patients_)
-toto
 
 
 traitements_ =  [

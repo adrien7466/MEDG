@@ -27,20 +27,6 @@ git clone lien_URL
 
 
 
-4. Obtenir et créer des branches
-# ---------------------------------------------
-
-! Indiquer toutes les branches disponibles, *indique la branche courante
-git branch
-
-! Créer une branche
-git branch nom_branch
-
-! Basculer sur la branche créée, * indiquera la nouvelle branche courante
-git checkout nom_branch
-
-! Supprimer une branche
-git branch -d nom_branch
 
 
 
@@ -82,10 +68,11 @@ git diff nom_fichier
 
 3. Réaliser un commit
 # ---------------------------------------------
-# ajouter un fichier au stage
+
+! ajouter un fichier au stage
+! git add  est indispensable lorsque vous venez de créer de nouveaux fichiers que Git ne connaît pas encore.
 git add nom_fichier1 nomfichier2
 git add .
-! git add  est indispensable lorsque vous venez de créer de nouveaux fichiers que Git ne connaît pas encore.
 
 
 ! Un commit est tout simplement un enregistrement de votre travail à un instant T sur la branche courante où vous êtes.
@@ -105,6 +92,13 @@ git reset num_commit
 
 !Si vous avez modifié plusieurs fichiers mais que vous n’avez pas encore envoyé le commit et que vous voulez restaurer un fichier tel qu’il était au dernier commit, utilisez  git checkout
 git checkout nom_fichier
+
+! Annuler un commit publié avec push
+! Il faut créer un nouveau commit qui effectue l’inverse des modifications
+(souvenez-vous qu’il n’est pas possible de supprimer un vieux commit envoyé, on ne peut qu’en créer de nouveaux.).
+ Les lignes que vous aviez ajoutées seront supprimées dans ce commit, et inversement.
+git revert num_commit
+git push
 
 
 
@@ -133,3 +127,26 @@ git stash apply identifiant_remise
 7. Pull
 # ---------------------------------------------
 ! git pull permet de récupérer en local le projet distant
+
+
+
+
+4. Obtenir et créer des branches
+# ---------------------------------------------
+
+! Indiquer toutes les branches disponibles, *indique la branche courante
+git branch
+
+! Créer une branche
+git branch nom_branch
+
+! Basculer sur la branche créée, * indiquera la nouvelle branche courante
+git checkout nom_branch
+
+! Supprimer une branche
+git branch -d nom_branch
+
+! Fusionner les changements
+! Lorsque vous avez fini de travailler sur une branche et que celle-ci est concluante,
+! il faut « fusionner » cette branche vers « master » avec la commande  git merge  .
+git merge
