@@ -103,8 +103,8 @@ git reset HEAD
 ! Annuler un commit particulier
 git reset num_commit
 
-
-
+!Si vous avez modifié plusieurs fichiers mais que vous n’avez pas encore envoyé le commit et que vous voulez restaurer un fichier tel qu’il était au dernier commit, utilisez  git checkout
+git checkout nom_fichier
 
 
 
