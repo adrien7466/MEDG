@@ -17,6 +17,10 @@ import operator
 from search_views.search import SearchListView
 from search_views.filters import BaseFilter
 
+from django.http import HttpResponseForbidden
+from django.urls import reverse
+from django.views.generic import FormView
+from django.views.generic.detail import SingleObjectMixin
 
 
 # --------------------------------------
@@ -162,7 +166,6 @@ def description(request, id):
 # II.2. Classe basée sur la vue générique DetailView
 class PatientDetailView(DetailView):
     model = Patient
-
     # optionnel
     # -----------
     # context_object_name 		= 	"patient"								# Paramétres par défaut "nom_objet_minuscule"
@@ -181,7 +184,6 @@ class PatientDetailView(DetailView):
         # print(self.request)
 
         return patient
-
 
 # ------------------------------------------------------------------------------------
 
@@ -298,7 +300,7 @@ class AddictionCreateView(CreateView):
 
 # IV. Exemple d'une vue avec un formulaire pré-rempli pour un objet qui existe déja
 # ------------------------------------------------------------------------------------
-class PatientUpdateView( UpdateView):
+class PatientUpdateView(UpdateView):
     model = Patient
     form_class = CreatePatientForm
     success_url = reverse_lazy("accueil")  # avec reverse_lazy on a accès à l'URL en donnant le nom de celle-ci
@@ -417,7 +419,69 @@ class CarnetUpdateView(UpdateView):
 
 
 
+"""
+# VII. Exemple d'une vue qui regroupe un DetailView et form
+# -----------------------------------------------------------------------------------
 
+class PatDetailView(DetailView):
+    model = Patient
+
+    # Optionel: pour modification d'un attribut de l'objet
+    def get_object(self):
+        # On récupère l'objet via la superclass içi la superclass est DetailView et possède la méthode get_objet
+        # patient = super(PatientDetailView,self).get_object()
+        # patient = super().get_object()
+        patient = DetailView.get_object(self)
+        patient.date_derniere_visite = datetime.now( )
+        patient.save( )
+        return patient
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = AddictionForm()
+        return context
+
+
+
+class AddictionFormView(SingleObjectMixin, FormView):
+    template_name = "appli_medG/patient_detail.html"
+    form_class = AddictionForm
+    model = Addiction
+
+    # success_url = reverse_lazy("accueil")  # avec reverse_lazy on a accès à l'URL en donnant le nom de celle-ci
+
+
+    def post(self, request, *args, **kwargs):
+        # if not request.user.is_authenticated:
+        #     return HttpResponseForbidden()
+        self.object = self.get_object()
+        # return super().post(request, *args, **kwargs)
+
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+
+    # def get_success_url(self):
+    #     return reverse('patient_detail', kwargs={'pk': self.object.pk})
+
+
+class PatientDetail(View):
+
+    def get(self, request, *args, **kwargs):
+        view = PatDetailView.as_view()
+        return view(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        view = AddictionFormView.as_view()
+        return view(request, *args, **kwargs)
+
+
+
+"""
 
 
 #------------------------------------------------------------------------------------------------------------------------------

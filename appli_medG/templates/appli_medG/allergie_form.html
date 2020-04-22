@@ -1,7 +1,10 @@
 {% extends "appli_medG/base_form.html" %}
+
+
 {% load crispy_forms_tags %}
+
 {% block content %}
-<form action="{% url "create_new_addiction" patient_pk%} " method="post" >
+<form action="{% url "create_new_allergie" patient_pk%} " method="post" >
 {% csrf_token %}
 {{ form|crispy }}
 <button type="submit" >Ajoutez</button>

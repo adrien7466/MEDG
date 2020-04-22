@@ -21,6 +21,7 @@ from appli_medG.views import PatientDetailView, PatientListView, TraitementListV
 from appli_medG.views import MaladieCreateView, AddictionCreateView
 from appli_medG.views import MaladieDeleteView
 from appli_medG.views import TraitementSearchView
+# from appli_medG.views import PatientDetail
 
 
 urlpatterns = [
@@ -33,6 +34,7 @@ urlpatterns = [
 	# II. Exemple d'une URL liée à une vue qui affiche un objet précis d'un modèle
 	# path("patient/<id>", views.description,name='desciption_patient'), 			# Vue de l'espace perso
 	path("patient_detail/<pk>", PatientDetailView.as_view( ), name='desciption_patient'),  # Vue de l'espace perso
+	# path("patient_detail/<pk>", PatientDetail.as_view( ), name='desciption_patient'),  # Vue de l'espace perso
 
 	# III. Exemple d'une URL liée à une vue qui crée un objet (formulaire)
 	# path("add_patient/", views.createPatient,name='create_new_patient'), # Formulaire pour création d'unnouveau patient
