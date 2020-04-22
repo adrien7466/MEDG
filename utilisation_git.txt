@@ -66,7 +66,8 @@ L'archivage se fait principalement avec la commande  git commit.
 2.  Voir l'état des fichiers
 # ---------------------------------------------
 # voir les fichiers qui ont été modifiés mais pas encore commités
-# Git vous liste tous les fichiers qui ont changé sur le disque. Il peut aussi bien détecter les modifications que les ajouts, les suppressions et les renommages
+# Git vous liste tous les fichiers qui ont changé sur le disque. Il peut aussi bien détecter les modifications que les ajouts,
+# les suppressions et les renommages
 git status
 
 # voir les changements effectués
