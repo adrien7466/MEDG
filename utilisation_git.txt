@@ -89,8 +89,8 @@ git add .
 ! Un commit est tout simplement un enregistrement de votre travail à un instant T sur la branche courante où vous êtes.
 git commmit -m "Commentaire sur l'enregistrement"
 
-! Commit de tous les fichiers dans la branche courante
-git commit -a
+! Commit de tous les fichiers dans la branche courante sans avoir à les ajouter au add
+git commit -a -m "Commentaire sur l'enregistrement"
 
 ! Consulter l'historique des commits
 git log
