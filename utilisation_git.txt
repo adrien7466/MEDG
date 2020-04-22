@@ -101,7 +101,8 @@ git reset HEAD
 ! Annuler un commit particulier
 git reset num_commit
 
-!Si vous avez modifié plusieurs fichiers mais que vous n’avez pas encore envoyé le commit et que vous voulez restaurer un fichier tel qu’il était au dernier commit, utilisez  git checkout
+!Si vous avez modifié plusieurs fichiers mais que vous n’avez pas encore envoyé le commit et que vous voulez restaurer un fichier
+! tel qu’il était au dernier commit, utilisez  git checkout
 git checkout nom_fichier
 
 ! Annuler un commit publié avec push
@@ -165,8 +166,6 @@ git stash list
 git stash apply identifiant_remise
 
 
-
-
 # ============================================================================================
 # VI. Gérez les branches sur le serveur
 # ============================================================================================
@@ -183,6 +182,20 @@ git branch --track branchelocale origin/brancheserveur
 ! Un pull depuis la branche « master » met à jour votre branche « master » locale en fonction de ce qui a changé sur le serveur,
 ! et il en va de même pour n’importe quelle autre branche.
 
-
 # Ajouter une branche sur le serveur
 git push origin origin:refs/heads/nom_nouvelle_branche
+
+
+# ============================================================================================
+# VII. REBASE
+# ============================================================================================
+git rebase master nom_branche
+
+
+# Exemple d'une fusion avec transplantation
+git rebase master bug1
+git checkout master
+git merge bug1  ou   git merge bug1 --no-ff (pour garder une trace des branches si c'est une grosse fonctionalité)
+git branch -d bug1
+
+

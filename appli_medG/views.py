@@ -239,11 +239,12 @@ class PatientCreateView2(CreateView):
 
     def get_initial(self):
         # Get the initial dictionary from the superclass method
-        initial = super(PatientDetailView, self).get_initial()
+        initial = super(PatientCreateView2, self).get_initial()
         # Copy the dictionary so we don't accidentally change a mutable dict
         initial = initial.copy()
-        initial['medecin_traitant'] = Medecin.objects.filter(nom__contains="Fu")
 
+        ids = Medecin.objects.filter(nom__icontains = "Michelon").values_list('id', flat=True)
+        initial['medecin_traitant'] = Medecin.objects.get(id=ids[0])
         return initial
 
 class MaladieCreateView(CreateView):

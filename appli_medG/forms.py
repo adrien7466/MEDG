@@ -40,6 +40,8 @@ class CreatePatientForm(forms.ModelForm):
         #Utilisation de la mise en forme crispy
         self.helper = FormHelper()
         self.helper.layout = Layout(
+            'medecin_traitant',
+
             Row(
                 Column('civilite', css_class='form-group col-md-1 mb-0'),
                 Column('nom', css_class='form-group col-md-5 mb-0'),
@@ -59,7 +61,6 @@ class CreatePatientForm(forms.ModelForm):
                 css_class='form-row'
             ),
 
-            'medecin_traitant',
             'numero_secu',
             'mail',
             'telephone',

@@ -53,9 +53,9 @@ class Personne(models.Model):
 
 
 class Patient(Personne):
+	medecin_traitant 		= 	models.ForeignKey('Medecin', null=True, on_delete=models.CASCADE)
 	secu_regex 				= 	RegexValidator(regex=r'^\d{13}$',message="Le numéro de sécu doit comporter 13 chiffres.")
 	numero_secu				=	models.CharField('Numéro de sécurité sociale', max_length=120, validators=[secu_regex],unique =True)
-	medecin_traitant		= 	models.ForeignKey('Medecin', null=True, on_delete=models.CASCADE)
 	date_naissance  		=	models.DateField('Date naissance')
 	lieu_naissance			=	models.CharField('lieu de naissance', max_length=120)
 	age 					= 	models.IntegerField()
